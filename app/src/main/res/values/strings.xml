@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MetroCard Tracker</string>
+    <string name="app_title_header">Welcome to the MetroCard Tracker!</string>
+    <string name="app_title_header_2">Select a MetroCard below.</string>
 </resources>
