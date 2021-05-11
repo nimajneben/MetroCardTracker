@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import edu.cuny.ccny.csc221.finalproject.R;
 
-public class MainActivity extends Activity {
+public class MainActivityOld extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_old);
     }
 }
