@@ -1,4 +1,4 @@
-package edu.cuny.ccny.csc221.finalproject;
+package com.billassociates.mtrack;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -7,7 +7,7 @@ import android.support.test.runner.AndroidJUnit4;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
+import org.junit.Assert;
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -20,6 +20,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("edu.cuny.ccny.csc221.finalproject", appContext.getPackageName());
+        Assert.assertEquals("com.billassociates.mtrack", appContext.getPackageName());
     }
 }
