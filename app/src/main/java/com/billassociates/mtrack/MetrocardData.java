@@ -1,12 +1,16 @@
 package com.billassociates.mtrack;
 
+import android.support.annotation.NonNull;
+
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Date;
 
 public class MetrocardData {
     private String name;
     private int balance;
     private Date expiration;
-    //datatype to hold image?
+    String image;
 
     public MetrocardData()
     {
@@ -43,5 +47,38 @@ public class MetrocardData {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    @NonNull
+    @NotNull
+    @Override
+    public String toString() {
+        return this.name +
+                ": " +
+                Double.toString(this.balance);
+    }
+
+    public int addBal(int bal)
+    {
+        return this.balance += bal;
+    }
+
+    public int subBal(int bal) throws Exception
+    {
+        if (this.balance - bal < 0)
+        {
+            throw new Exception("Balance below zero!");
+        }
+        return this.balance -= bal;
+    }
+
+
 
 }
