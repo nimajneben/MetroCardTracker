@@ -7,9 +7,6 @@
     android:layout_height="match_parent"
     tools:context="com.billassociates.mtrack.MetrocardEditActivity"
     android:parentActivityName=".MainActivityOld">
-<!--    <meta-data-->
-<!--        android:name="android.support.PARENT_ACTIVITY"-->
-<!--        android:value=".MainActivity" />-->
 
 
 
