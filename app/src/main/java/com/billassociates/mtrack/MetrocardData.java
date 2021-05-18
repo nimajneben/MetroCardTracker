@@ -1,12 +1,11 @@
 package com.billassociates.mtrack;
 
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
-
-import org.jetbrains.annotations.NotNull;
-
 import java.util.Date;
 
-public class MetrocardData {
+public class MetrocardData implements Parcelable {
     private String name;
     private int balance;
     private Date expiration;
@@ -23,6 +22,24 @@ public class MetrocardData {
         this.balance = balance;
     }
 
+
+    protected MetrocardData(Parcel in) {
+        name = in.readString();
+        balance = in.readInt();
+        image = in.readString();
+    }
+
+    public static final Creator<MetrocardData> CREATOR = new Creator<MetrocardData>() {
+        @Override
+        public MetrocardData createFromParcel(Parcel in) {
+            return new MetrocardData(in);
+        }
+
+        @Override
+        public MetrocardData[] newArray(int size) {
+            return new MetrocardData[size];
+        }
+    };
 
     public Date getExpiration() {
         return expiration;
@@ -57,7 +74,6 @@ public class MetrocardData {
     }
 
     @NonNull
-    @NotNull
     @Override
     public String toString() {
         return this.name +
@@ -80,5 +96,15 @@ public class MetrocardData {
     }
 
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
 
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeInt(balance);
+        dest.writeString(image);
+    }
 }
