@@ -11,6 +11,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.ObjectStreamException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
@@ -26,7 +27,7 @@ public class MetroCardController {
         return arrayList;
     }
 
-    public void ReadToArrayList(Context c)
+    public void ReadToArrayList(Context c) throws FileNotFoundException, IOException, ClassNotFoundException
     {
         try
         {
@@ -35,13 +36,14 @@ public class MetroCardController {
             arrayList = (ArrayList<MetrocardData>) os.readObject();
 
         }
-        catch (Exception fnfe)
+        catch (Exception e)
         {
-            String errormsg = "Cannot read in object!!";
+            String errormsg = "uh oh.";
             System.err.println(errormsg);
             Toast t = Toast.makeText(c,errormsg,Toast.LENGTH_SHORT);
             t.show();
-
+            e.printStackTrace();
+            throw e;
         }
 
 
