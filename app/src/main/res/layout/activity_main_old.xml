@@ -36,7 +36,7 @@
             android:id="@+id/MainOld_add"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight=".4"
+            android:layout_weight=".2"
             android:onClick="addMetroCardBtnClick"
             android:text="Add MetroCard..." />
 
