@@ -10,16 +10,40 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import edu.cuny.ccny.csc221.finalproject.R;
 
 public class MainActivityOld extends Activity {
 
+    private static MetroCardController mcontroller = new MetroCardController();
+    ArrayList<MetrocardData> arrayList = new ArrayList<>();
+    ArrayAdapter<MetrocardData> arrayAdapter;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_old);
+        try
+        {
+            updatearraylist(mcontroller);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    private void updatearraylist(MetroCardController mcontroller) throws FileNotFoundException, IOException, ClassNotFoundException
+    {
+        mcontroller.ReadToArrayList(getApplicationContext());
+        arrayList = mcontroller.getArrayList();
+        arrayAdapter = new ArrayAdapter<MetrocardData>(this, android.R.layout.simple_list_item_1, arrayList);
+        ListView lstView = (ListView) findViewById(R.id.McardList);
+        lstView.setAdapter(arrayAdapter);
     }
 
 
@@ -36,18 +60,6 @@ public class MainActivityOld extends Activity {
         Toast t = Toast.makeText(c,text,duration);
 
         t.show();
-
-
-        // Populate ListView Test
-        ListView lv = (ListView) findViewById(R.id.McardList);
-        MetroCardController mc = new MetroCardController();
-        mc.ReadToArrayList(c);
-        ArrayList<MetrocardData> arrayList = mc.getArrayList();
-        arrayList.add(new MetrocardData("Test",232));
-        ArrayAdapter<MetrocardData> arrayAdapter = new ArrayAdapter<MetrocardData>
-                (this, android.R.layout.simple_list_item_1,arrayList);
-        lv.setAdapter(arrayAdapter);
-
 
         goToEditActivity(v);
     }
